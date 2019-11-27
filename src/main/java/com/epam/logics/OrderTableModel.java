@@ -1,12 +1,13 @@
-package com.epam.ui;
+package com.epam.logics;
 
 import com.epam.model.RepairOrder;
+import org.springframework.stereotype.Component;
 
+import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
+@Component
 public class OrderTableModel extends AbstractTableModel {
 
     List<RepairOrder> repairOrders = new ArrayList<RepairOrder>();
@@ -52,7 +53,7 @@ public class OrderTableModel extends AbstractTableModel {
                 orderAttribute = orderObject.getRepairOrderEndDate();
                 break;
             case 4:
-                orderAttribute = orderObject.getClient().firstName + orderObject.getClient().lastName;
+                orderAttribute = orderObject.getClient().firstName + " " + orderObject.getClient().lastName;
                 break;
             case 5:
                 orderAttribute = orderObject.getDevice().defect.defectName;

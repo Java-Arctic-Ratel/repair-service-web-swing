@@ -1,19 +1,19 @@
 package com.epam.model;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.math.BigDecimal;
 
 @JsonInclude
 @JsonPropertyOrder({
         "repairOrderId",
         "repairOrderStartDate",
         "repairOrderEndDate",
+        "repairOrderIssueDate",
         "repairOrderCostEstimated",
+        "repairOrderCostTotal",
         "client",
         "device",
         "status",
@@ -25,11 +25,15 @@ public class RepairOrder {
     @JsonProperty("repairOrderId")
     private int repairOrderId;
     @JsonProperty("repairOrderStartDate")
-    private String repairOrderStartDate = null;
+    private String repairOrderStartDate;
     @JsonProperty("repairOrderEndDate")
-    private String repairOrderEndDate = null;
+    private String repairOrderEndDate;
+    @JsonProperty("repairOrderIssueDate")
+    private String repairOrderIssueDate;
     @JsonProperty("repairOrderCostEstimated")
     private BigDecimal repairOrderCostEstimated;
+    @JsonProperty("repairOrderCostTotal")
+    private BigDecimal repairOrderCostTotal;
     @JsonProperty("client")
     private Client client;
     @JsonProperty("device")
@@ -65,8 +69,24 @@ public class RepairOrder {
         this.repairOrderEndDate = repairOrderEndDate;
     }
 
+    public String getRepairOrderIssueDate() {
+        return repairOrderIssueDate;
+    }
+
+    public void setRepairOrderIssueDate(String repairOrderIssueDate) {
+        this.repairOrderIssueDate = repairOrderIssueDate;
+    }
+
     public BigDecimal getRepairOrderCostEstimated() {
         return repairOrderCostEstimated;
+    }
+
+    public BigDecimal getRepairOrderCostTotal() {
+        return repairOrderCostTotal;
+    }
+
+    public void setRepairOrderCostTotal(BigDecimal repairOrderCostTotal) {
+        this.repairOrderCostTotal = repairOrderCostTotal;
     }
 
     public void setRepairOrderCostEstimated(BigDecimal repairOrderCostEstimated) {
