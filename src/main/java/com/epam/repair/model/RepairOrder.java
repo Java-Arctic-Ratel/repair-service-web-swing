@@ -2,25 +2,12 @@ package com.epam.repair.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonInclude
-@JsonPropertyOrder({
-        "repairOrderId",
-        "repairOrderStartDate",
-        "repairOrderEndDate",
-        "repairOrderIssueDate",
-        "repairOrderCostEstimated",
-        "repairOrderCostTotal",
-        "client",
-        "device",
-        "status",
-        "employee",
-        "sparePart"
-})
+
 public class RepairOrder {
 
     @JsonProperty("repairOrderId")

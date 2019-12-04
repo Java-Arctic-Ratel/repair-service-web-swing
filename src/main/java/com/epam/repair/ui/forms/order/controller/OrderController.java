@@ -15,14 +15,12 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 
-
 @Controller
 public class OrderController extends AbstractFrameController {
 
     private TableFrame tableFrame;
     private OrderTableModel tableModel;
 
-    @Autowired
     public OrderController(TableFrame tableFrame,
                            OrderTableModel tableModel) {
         this.tableFrame = tableFrame;
@@ -37,13 +35,14 @@ public class OrderController extends AbstractFrameController {
     }
 
     @Override
-    public void prepareAndOpenFrame(int page) {
+    public void prepareAndOpenFrame(int page) throws IOException, InterruptedException {
         loadEntities(page);
         showTableFrame();
     }
 
-    private void loadEntities(int page) {
-        List<RepairOrder> entities = OrderService.findAll(page);
+    private void loadEntities(int page) throws IOException, InterruptedException {
+        List<RepairOrder> entities;
+        entities = OrderService.findAll(page);
         tableModel.clear();
         tableModel.addEntities(entities);
     }
@@ -71,5 +70,4 @@ public class OrderController extends AbstractFrameController {
             Notifications.showDeleteRowErrorMessage();
         }
     }
-
 }
