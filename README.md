@@ -32,4 +32,4 @@ mvn spring-boot:run
 ```
 
 ## Screens
-![alt text](https://github.com/Java-Arctic-Ratel/blob/master/src/main/resources/images/order-list.png "Screen 1")
+![alt text](https://github.com/Java-Arctic-Ratel/repair-service-web-swing/blob/init-project/src/main/resources/images/order-list.png "Screen 1")
