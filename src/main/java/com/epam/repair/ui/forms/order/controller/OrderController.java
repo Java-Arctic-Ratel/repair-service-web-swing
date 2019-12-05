@@ -1,5 +1,6 @@
 package com.epam.repair.ui.forms.order.controller;
 
+import com.epam.repair.exception.OrderNotFoundException;
 import com.epam.repair.model.RepairOrder;
 import com.epam.repair.service.OrderService;
 import com.epam.repair.ui.forms.order.model.OrderTableModel;
@@ -9,18 +10,34 @@ import com.epam.repair.ui.shared.controller.AbstractFrameController;
 import com.epam.repair.util.Notifications;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.client.ResourceAccessException;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The type Order controller.
+ */
 @Controller
 public class OrderController extends AbstractFrameController {
 
     private TableFrame tableFrame;
     private OrderTableModel tableModel;
 
+    /**
+     * The Order service.
+     */
+    @Autowired
+    OrderService orderService;
+
+    /**
+     * Instantiates a new Order controller.
+     *
+     * @param tableFrame the table frame
+     * @param tableModel the table model
+     */
     public OrderController(TableFrame tableFrame,
                            OrderTableModel tableModel) {
         this.tableFrame = tableFrame;
@@ -40,11 +57,14 @@ public class OrderController extends AbstractFrameController {
         showTableFrame();
     }
 
-    private void loadEntities(int page) throws IOException, InterruptedException {
-        List<RepairOrder> entities;
-        entities = OrderService.findAll(page);
-        tableModel.clear();
-        tableModel.addEntities(entities);
+    private void loadEntities(int page) {
+
+        try {
+            tableModel.clear();
+            tableModel.addEntities(orderService.findAll(page));
+        } catch (ResourceAccessException e) {
+            throw new OrderNotFoundException();
+        }
     }
 
     private void showTableFrame() {
@@ -62,7 +82,7 @@ public class OrderController extends AbstractFrameController {
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 RepairOrder entity = tableModel.getEntityByRow(selectedRow);
-                OrderService.deleteOrderById(entity.getRepairOrderId());
+                orderService.deleteOrderById(entity.getRepairOrderId());
                 tableModel.removeRow(selectedRow);
                 loadEntities(0);
             }
