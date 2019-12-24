@@ -1,0 +1,65 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseDragged", "thisMouseDragged", true ) )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Repair Service Application"
+				"horizontalAlignment": 0
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "Delete"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "Add"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "Edit"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel3"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "scrollPane1PropertyChange", true ) )
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "table1"
+							"preferredScrollableViewportSize": new java.awt.Dimension( 1500, 700 )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 405, 300 )
+		} )
+		add( new FormComponent( "javax.swing.JTextPane" ) {
+			name: "textPane1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 635, 125 )
+		} )
+	}
+}

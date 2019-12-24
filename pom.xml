@@ -4,9 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.epam</groupId>
+    <groupId>epam</groupId>
     <artifactId>spring-boot-swing</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+    <modules>
+        <module>main</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,6 +38,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jtattoo</groupId>
+            <artifactId>JTattoo</artifactId>
+            <version>1.6.12</version>
         </dependency>
     </dependencies>
 
