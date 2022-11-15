@@ -19,7 +19,7 @@
     </parent>
 
     <properties>
-        <jackson.version>2.10.1</jackson.version>
+        <jackson.version>2.12.7.1</jackson.version>
         <googleCollections.version>1.0-rc5</googleCollections.version>
         <mavenCompilerPlugin.version>3.8.1</mavenCompilerPlugin.version>
     </properties>
